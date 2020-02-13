@@ -1,28 +1,25 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <b-navbar id="navbar-main" toggleable="sm" sticky variant="dark" type="dark" class="bg-primary">
+            <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
+            <b-navbar-brand href="#">TruckU</b-navbar-brand>
+            <b-navbar-nav>
+                <b-nav-item href="#">Home</b-nav-item>
+            </b-navbar-nav>
+        </b-navbar>
+        <router-view />
+    </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<style lang="scss" scoped>
+    #app {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    #navbar-main {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
 </style>
