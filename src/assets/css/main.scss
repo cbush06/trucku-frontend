@@ -1,8 +1,12 @@
-@import './variables';
-@import '~bootstrap';
-@import '~bootstrap-vue';
-@import './bootswatch';
+@import "./variables";
+@import "~bootstrap";
+@import "~bootstrap-vue";
+@import "./bootswatch";
+@import "~material-design-icons/iconfont/material-icons.css";
 
-html, body {
+@import "./forms";
+
+html,
+body {
     height: 100%;
 }

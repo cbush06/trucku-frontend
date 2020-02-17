@@ -1,36 +1,32 @@
 <template>
-    <div class="map" :id="'map-' + _uid"></div>
+    <div class="map"></div>
 </template>
 
 <script>
-import { Loader } from '@googlemaps/loader'
+import componentHelper from '@/components/component-helper'
 
 export default {
+    name: 'google-map',
     props: {
         mapConfig: {
             type: Object,
             default: {}
-        },
-        apiKey: String //AIzaSyD5cw8n3PtAiERjS2D6U2E4VqeGsm865Js
+        }
     },
     data() {
         return {
-            googleMapApi: null,
             map: null
         };
     },
-    async mounted() {
-        this.googleMapApi = await (new Loader({
-            apiKey: this.apiKey
-        }));
-        this.googleMapApi
-            .load()
-            .then(() => {
-                new google.maps.Map(document.getElementById('map-' + this._uid), this.mapConfig);
-            })
-            .catch(e => {
-                console.log(e);
-            });
+    mounted() {
+        try {
+            const parent = componentHelper.findParentByName(this, 'google-map-container');
+            const containerId = parent.registerMap(this);
+            this.map = new google.maps.Map(document.getElementById(containerId), this.mapConfig);
+        } catch(e) {
+            console.log(e);
+            return;
+        }
     }
 }
 </script>

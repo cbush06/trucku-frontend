@@ -7,6 +7,7 @@ import store from '@/store'
 
 import { CardPlugin, NavbarPlugin } from 'bootstrap-vue'
 import AxiosConfig from '@/config/axios_config'
+import { Loader } from '@googlemaps/loader'
 
 Vue.use(CardPlugin);
 Vue.use(NavbarPlugin);
@@ -14,8 +15,18 @@ Vue.use(AxiosConfig);
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+const mapsApiKey = process.env.VUE_APP_MAPS_API_KEY;
+
+(async function(){
+    new Vue({
+        router,
+        store,
+        render: h => h(App)
+    }).$mount('#app');
+
+    await (new Loader({
+        version: 'weekly',
+        apiKey: mapsApiKey,
+        libraries: [ 'places' ]
+    })).load();
+})();

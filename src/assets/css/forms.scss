@@ -1,0 +1,18 @@
+div.textbox-icon {
+    position: relative;
+
+    i.material-icons {
+        position: absolute;
+        left: 0.3em;
+        height: 24px;
+        width: 24px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 4; /** when focused, the typeahead changes its textbox's z-index to 3 */
+    }
+
+    input.form-control {
+        padding-left: 2.5em;
+    }
+}
