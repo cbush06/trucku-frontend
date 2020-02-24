@@ -27,6 +27,6 @@ const mapsApiKey = process.env.VUE_APP_MAPS_API_KEY;
     await (new Loader({
         version: 'weekly',
         apiKey: mapsApiKey,
-        libraries: [ 'places' ]
+        libraries: [ 'places', 'directions' ]
     })).load();
 })();

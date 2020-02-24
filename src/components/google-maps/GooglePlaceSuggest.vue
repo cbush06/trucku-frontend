@@ -1,6 +1,7 @@
 <template>
     <div class="textbox-icon search-wrapper">
         <vue-bootstrap-typeahead
+            ref="typeahead"
             v-model="query"
             :data="places"
             :serializer=" p => p.formatted_address"
@@ -48,6 +49,9 @@ export default {
         this.placesSvc = new google.maps.places.PlacesService(map);
     },
     methods: {
+        focus() {
+            this.$refs.typeahead.$refs.input.focus();
+        },
         selected(value) {
             this.$emit('selected', value);
         }

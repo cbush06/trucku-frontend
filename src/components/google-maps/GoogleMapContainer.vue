@@ -15,7 +15,7 @@ export default {
         return {
             map: null,
             mapContainerId: null,
-            placeSuggest: null
+            placeSuggesters: new Array()
         }
     },
     created() {
@@ -32,8 +32,8 @@ export default {
         registerPlaceSuggest(placeSuggest) {
             return new Promise(
                 async (resolve, reject) => {
-                    if(this.placeSuggest) {
-                        reject('MapSuggest component already registered');
+                    if(this.placeSuggesters.indexOf(placeSuggest) > -1) {
+                        reject('GooglePlaceSugest component already registered');
                     }
                     
                     let tries = 0;
@@ -45,7 +45,7 @@ export default {
                         reject('Faild to register PlaceSuggest component due to timeout waiting for GoogleMap component');
                     }
 
-                    this.placeSuggest = placeSuggest;
+                    this.placeSuggesters.push(placeSuggest);
                     resolve(this.map.map);
                 }
             );
