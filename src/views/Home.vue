@@ -30,7 +30,7 @@
             </div>
 
             <template v-slot:footer>
-                <button class="btn btn-success btn-block">
+                <button class="btn btn-primary btn-block">
                     <big>Let's go!</big>
                 </button>
             </template>
