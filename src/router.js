@@ -18,6 +18,11 @@ const router = new Router({
                 //     component: () => import('./components/ChangeRequest.vue')
                 // }
             ]
+        },
+        {
+            name: "describe-shipment",
+            path: "/describe-shipment",
+            component: () => import('@/views/DescribeShipment')
         }
     ]
 });
@@ -29,11 +34,12 @@ router.beforeEach(async (to, from, next) => {
         currentUser = store.getters["session/getCurrentUser"];
     }
 
-    if (to.name !== "accountRequest" && (_.isNil(currentUser.principal) || _.isNil(currentUser.principal.email) || !currentUser.principal.enabled)) {
-        next({ name: "accountRequest" });
-    } else {
-        next();
-    }
+    // if (to.name !== "accountRequest" && (_.isNil(currentUser.principal) || _.isNil(currentUser.principal.email) || !currentUser.principal.enabled)) {
+    //     next({ name: "accountRequest" });
+    // } else {
+    //     next();
+    // }
+    next();
 });
 
 export default router;
