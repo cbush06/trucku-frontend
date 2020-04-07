@@ -2,9 +2,12 @@
     <div id="app">
         <b-navbar id="navbar-main" toggleable="sm" sticky variant="dark" type="dark" class="bg-primary">
             <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
-            <b-navbar-brand href="#">TruckU</b-navbar-brand>
+            <b-navbar-brand href="/">TruckU</b-navbar-brand>
             <b-navbar-nav>
-                <b-nav-item href="#">Home</b-nav-item>
+                <b-nav-item href="/">Home</b-nav-item>
+                <b-nav-item-dropdown text="Profile" right>
+                    <b-dropdown-item href="/profile">Account Settings</b-dropdown-item>
+                </b-nav-item-dropdown>
             </b-navbar-nav>
         </b-navbar>
         <router-view />
