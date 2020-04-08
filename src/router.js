@@ -12,19 +12,24 @@ const router = new Router({
         {
             name: "home",
             path: "/",
-            component: Home,
-            // children: [
-            //     // {
-            //     //     name: 'changeRequests',
-            //     //     path: '/mwslin/:id/change-requests',
-            //     //     component: () => import('./components/ChangeRequest.vue')
-            //     // }
-            // ]
+            component: Home
         },
         {
             name: "profile",
             path: '/profile',
             component: Profile
+            children: [
+                // {
+                //     name: 'changeRequests',
+                //     path: '/mwslin/:id/change-requests',
+                //     component: () => import('./components/ChangeRequest.vue')
+                // }
+            ]
+        },
+        {
+            name: "describe-shipment",
+            path: "/describe-shipment",
+            component: () => import('@/views/DescribeShipment')
         }
 
     ]
@@ -37,11 +42,12 @@ router.beforeEach(async (to, from, next) => {
         currentUser = store.getters["session/getCurrentUser"];
     }
 
-    if (to.name !== "accountRequest" && (_.isNil(currentUser) || _.isNil(currentUser.email) || !currentUser.enabled)) {
-        next({ name: "accountRequest" });
-    } else {
-        next();
-    }
+    // if (to.name !== "accountRequest" && (_.isNil(currentUser.principal) || _.isNil(currentUser.principal.email) || !currentUser.principal.enabled)) {
+    //     next({ name: "accountRequest" });
+    // } else {
+    //     next();
+    // }
+    next();
 });
 
 export default router;

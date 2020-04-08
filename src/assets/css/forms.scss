@@ -16,3 +16,13 @@ div.textbox-icon {
         padding-left: 2.5em;
     }
 }
+
+.btn.circle {
+    border-radius: 50%;
+    &.material-icons {
+        height: 1.8em;
+        width: 1.8em;
+        line-height: 1.7em;
+        padding: 0px;
+    }
+}

@@ -30,7 +30,7 @@
             </div>
 
             <template v-slot:footer>
-                <button class="btn btn-primary btn-block">
+                <button class="btn btn-primary btn-block" @click="$router.push({ name: 'describe-shipment' })">
                     <big>Let's go!</big>
                 </button>
             </template>
