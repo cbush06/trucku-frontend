@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@googlemaps/loader": "0.0.5",
+    "@vue/cli": "^4.2.3",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.4.0",
