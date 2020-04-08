@@ -33,6 +33,7 @@
 <script>
 import { mapMutations, mapState } from "vuex";
 import userService from '@/services/user_service'
+import store from "@/store";
 
 export default {
 	name: "Profile",
@@ -42,7 +43,8 @@ export default {
 		}),
 		async save() {
 			try {
-				this.setCurrentUser(( await userService.updateMe(this.currentUser)).data);
+				this.user = (( await store.dispatch('session/save', this.currentUser)));
+
 			} catch (e) {
 				console.log(e);
 			}

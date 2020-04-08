@@ -31,17 +31,16 @@ export default {
                 console.log("error logging user in: " + e);
             }
         },
-        // save({ commit }, user) {
-        //     const userSvc = UserServiceFactory.create(this._vm.$http);
-        //     userSvc.updateMe(user).then(
-        //         success => {
-        //             localStorage.setItem('theme', success.body.theme);
-        //             commit('setUser', success.body);
-        //         },
-        //         failure => {
-        //             console.log(failure.body);
-        //         }
-        //     );
-        // }
+        save({ commit }, user) {
+            userService.updateMe(user).then(
+                success => {
+                    // localStorage.setItem('theme', success.body.theme);
+                    commit('setUser', success.data);
+                },
+                failure => {
+                    console.log(failure.body);
+                }
+            );
+        }
     }
 };
