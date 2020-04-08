@@ -3,7 +3,7 @@
 		<b-col sm="4">
 			<b-row>
 				<b-col sm="3">
-					<label for="fistName" class="col-4 col-form-label required">First Name</label>
+					<label for="fistName" class="col-form-label required">First Name</label>
 				</b-col>
 				<b-col sm="6">
 					<b-form-input  id="firstName" type="text" v-model="currentUser.firstName"></b-form-input>
@@ -11,7 +11,7 @@
 			</b-row>
 			<b-row>
 				<b-col sm="3">
-					<label for="lastName" class="col-4 col-form-label required">Last Name</label>
+					<label for="lastName" class="col-form-label required">Last Name</label>
 				</b-col>
 				<b-col sm="6">
 					<b-form-input  id="lastName" type="text" v-model="currentUser.lastName"></b-form-input>
@@ -19,7 +19,7 @@
 			</b-row>
 			<b-row>
 				<b-col sm="3">
-					<label for="email" class="col-4 col-form-label required">Email</label>
+					<label for="email" class="col-form-label required">Email</label>
 				</b-col>
 				<b-col sm="6">
 					<b-form-input  id="email" type="email" v-model="currentUser.email"></b-form-input>
@@ -35,14 +35,18 @@ import { mapMutations, mapState } from "vuex";
 import userService from '@/services/user_service'
 
 export default {
-    name: "Profile",
+	name: "Profile",
     methods: {
         ...mapMutations('session', {
             setCurrentUser: 'setUser'
-				}),
-				save() {
-					userService.updateMe(this.currentUser);
-				}
+		}),
+		async save() {
+			try {
+				this.setCurrentUser(( await userService.updateMe(this.currentUser)).data);
+			} catch (e) {
+				console.log(e);
+			}
+		}
     },
     computed: {
         ...mapState("session", {  
@@ -56,5 +60,8 @@ export default {
 
 .info {
 	padding: 5em;
+}
+.row {
+	padding: .25em;
 }
 </style>
