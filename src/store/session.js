@@ -31,16 +31,12 @@ export default {
                 console.log("error logging user in: " + e);
             }
         },
-        save({ commit }, user) {
-            userService.updateMe(user).then(
-                success => {
-                    // localStorage.setItem('theme', success.body.theme);
-                    commit('setUser', success.data);
-                },
-                failure => {
-                    console.log(failure.body);
-                }
-            );
+        async save({ commit }, user) {
+            try {
+                commit('setUser', (await userService.updateMe(user)).data);
+            } catch(e) {
+                console.log("error updating user: " + e);
+            }
         }
     }
 };
