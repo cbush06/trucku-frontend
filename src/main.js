@@ -7,12 +7,14 @@ import store from '@/store'
 
 import { CardPlugin, NavbarPlugin, TabsPlugin } from 'bootstrap-vue'
 import AxiosConfig from '@/config/axios_config'
+import VeeConfig from '@/config/vee_config'
 import { Loader } from '@googlemaps/loader'
 
 Vue.use(CardPlugin);
 Vue.use(NavbarPlugin);
 Vue.use(TabsPlugin);
 Vue.use(AxiosConfig);
+Vue.use(VeeConfig);
 
 Vue.config.productionTip = false
 

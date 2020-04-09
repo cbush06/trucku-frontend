@@ -102,7 +102,10 @@
                                                 </div>
                                                 <div class="form-group mt-2">
                                                     <label :for="`description${itemDim.id}`">Description</label>
-                                                    <input :id="`description${itemDim.id}`" v-model="itemDim.description" type="text" class="form-control" />
+                                                    <ValidationProvider v-slot="{ errors, classes }" name="Description" rules="required">
+                                                        <input :id="`description${itemDim.id}`" v-model="itemDim.description" type="text" class="form-control" :class="classes" required />
+                                                        <span>{{ errors[0] }}</span>
+                                                    </ValidationProvider>
                                                 </div>
                                                 <div class="row mt-2">
                                                     <div class="col-md-3">
@@ -192,8 +195,12 @@
 
 <script>
 import Vue from 'vue'
+import { ValidationProvider } from 'vee-validate'
 
 export default {
+    components: {
+        ValidationProvider
+    },
     data() {
         return {
             activeTabIdx: 0,

@@ -1,3 +1,10 @@
+input:required {
+    box-shadow: none;
+}
+input:invalid {
+    box-shadow: none;
+}
+
 div.textbox-icon {
     position: relative;
 
@@ -24,5 +31,20 @@ div.textbox-icon {
         width: 1.8em;
         line-height: 1.7em;
         padding: 0px;
+    }
+}
+
+.form-control {
+    &.touched.invalid {
+        border: 1px solid $red;
+    }
+
+    &.touched.invalid:focus, &.touched.invalid:active {
+        border: 1px solid $red;
+        box-shadow: 0px 0px 5px $red;
+    }
+
+    & + span {
+        color: $red;
     }
 }

@@ -17,7 +17,7 @@ const router = new Router({
         {
             name: "profile",
             path: '/profile',
-            component: Profile
+            component: Profile,
             children: [
                 // {
                 //     name: 'changeRequests',
